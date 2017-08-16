@@ -14,6 +14,7 @@ import {
 } from '../actions/entries';
 import { closeEntry } from '../actions/editor';
 import { addAsset, removeAsset } from '../actions/media';
+import { openMediaLibrary } from '../actions/mediaLibrary';
 import { openSidebar } from '../actions/globalUI';
 import { selectEntry, getAsset } from '../reducers';
 import { selectFields } from '../reducers/collections';
@@ -37,6 +38,7 @@ class EntryPage extends React.Component {
     persistEntry: PropTypes.func.isRequired,
     deleteEntry: PropTypes.func.isRequired,
     showDelete: PropTypes.bool.isRequired,
+    openMediaLibrary: PropTypes.func.isRequired,
     removeAsset: PropTypes.func.isRequired,
     closeEntry: PropTypes.func.isRequired,
     openSidebar: PropTypes.func.isRequired,
@@ -114,6 +116,7 @@ class EntryPage extends React.Component {
       collection,
       changeDraftField,
       changeDraftFieldValidation,
+      openMediaLibrary,
       addAsset,
       removeAsset,
       closeEntry,
@@ -137,6 +140,7 @@ class EntryPage extends React.Component {
         fieldsErrors={entryDraft.get('fieldsErrors')}
         onChange={changeDraftField}
         onValidate={changeDraftFieldValidation}
+        onOpenMediaLibrary={openMediaLibrary}
         onAddAsset={addAsset}
         onRemoveAsset={removeAsset}
         onPersist={this.handlePersistEntry}
@@ -173,6 +177,7 @@ export default connect(
   {
     changeDraftField,
     changeDraftFieldValidation,
+    openMediaLibrary,
     addAsset,
     removeAsset,
     loadEntry,
