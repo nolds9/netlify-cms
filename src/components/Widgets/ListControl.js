@@ -32,6 +32,7 @@ export default class ListControl extends Component {
     field: PropTypes.node,
     forID: PropTypes.string,
     getAsset: PropTypes.func.isRequired,
+    onOpenMediaLibrary: PropTypes.func.isRequired,
     onAddAsset: PropTypes.func.isRequired,
     onRemoveAsset: PropTypes.func.isRequired,
   };
@@ -134,7 +135,7 @@ export default class ListControl extends Component {
   };
 
   renderItem(item, index) {
-    const { value, field, getAsset, onAddAsset, onRemoveAsset } = this.props;
+    const { value, field, getAsset, onOpenMediaLibrary, onAddAsset, onRemoveAsset } = this.props;
     const { itemStates } = this.state;
     const collapsed = itemStates.getIn([index, 'collapsed']);
     const classNames = [styles.item, collapsed ? styles.collapsed : styles.expanded];
@@ -162,6 +163,7 @@ export default class ListControl extends Component {
           className={styles.objectControl}
           onChange={this.handleChangeFor(index)}
           getAsset={getAsset}
+          onOpenMediaLibrary={onOpenMediaLibrary}
           onAddAsset={onAddAsset}
           onRemoveAsset={onRemoveAsset}
         />
